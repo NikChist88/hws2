@@ -40,17 +40,15 @@ export const filterAffairs = (
   affairs: AffairType[],
   filter: FilterType
 ): AffairType[] => {
-  // need to fix any
-  if (filter === 'high') {
-    return affairs.filter((a: AffairType) => a.priority === filter)
-  }
-  if (filter === 'middle') {
-    return affairs.filter((a: AffairType) => a.priority === filter)
-  }
-  if (filter === 'low') {
-    return affairs.filter((a: AffairType) => a.priority === filter)
-  } else {
-    return [...affairs]
+  switch (filter) {
+    case 'high':
+      return affairs.filter((a: AffairType) => a.priority === filter)
+    case 'middle':
+      return affairs.filter((a: AffairType) => a.priority === filter)
+    case 'low':
+      return affairs.filter((a: AffairType) => a.priority === filter)
+    default:
+      return [...affairs]
   }
 }
 
