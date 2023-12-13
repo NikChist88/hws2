@@ -41,11 +41,19 @@ export const filterAffairs = (
   filter: FilterType
 ): AffairType[] => {
   // need to fix any
-  const filteredAffairs = affairs.map((a: AffairType) =>
-    a.priority === filter ? { ...a, priority: filter } : a
-  )
-  return filteredAffairs // need to fix
+  if (filter === 'high') {
+    return affairs.filter((a: AffairType) => a.priority === filter)
+  }
+  if (filter === 'middle') {
+    return affairs.filter((a: AffairType) => a.priority === filter)
+  }
+  if (filter === 'low') {
+    return affairs.filter((a: AffairType) => a.priority === filter)
+  } else {
+    return [...affairs]
+  }
 }
+
 export const deleteAffair = (
   affairs: AffairType[],
   _id: number
@@ -60,7 +68,6 @@ function HW2() {
   const [filter, setFilter] = useState<FilterType>('all')
 
   const filteredAffairs = filterAffairs(affairs, filter)
-  console.log(filteredAffairs)
 
   const deleteAffairCallback = (_id: number) => {
     // need to fix any
