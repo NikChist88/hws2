@@ -2,8 +2,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation,
-  useNavigate,
 } from 'react-router-dom'
 import Error404 from './pages/Error404'
 import PreJunior from './pages/PreJunior'
@@ -11,26 +9,20 @@ import Junior from './pages/Junior'
 import JuniorPlus from './pages/JuniorPlus'
 
 export const PATH = {
+  HOME: '/',
   PRE_JUNIOR: '/pre-junior',
   JUNIOR: '/junior',
   JUNIOR_PLUS: '/junior-plus',
 }
 
 function Pages() {
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  if (location.pathname === '/') {
-    navigate('/pre-junior')
-  }
-
   return (
     <div>
       {/*Routes выбирает первый подходящий роут*/}
       <Routes>
         {/*роутинг будут писать студенты*/}
         {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу /pre-junior*/}
-        <Route path={'/'} />
+        <Route path={'/'} element={<PreJunior />} />
 
         {/*роуты для /pre-junior, /junior, /junior-plus*/}
         <Route path={PATH.PRE_JUNIOR} element={<PreJunior />} />
