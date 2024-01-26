@@ -12,16 +12,17 @@ export const homeWorkReducer = (
   switch (action.type) {
     case 'sort': {
       // by name
+      let sortedUsers = state
       if (action.payload === 'up') {
-        state.sort((a, b) => (a.name > b.name ? 1 : -1))
+        sortedUsers = state.slice().sort((a, b) => (a.name > b.name ? 1 : -1))
+      } else if (action.payload === 'down') {
+        sortedUsers = state.slice().sort((a, b) => (a.name < b.name ? 1 : -1))
       }
-      if (action.payload === 'down') {
-        state.sort((a, b) => (a.name < b.name ? 1 : -1))
-      }
-      return state
+      return sortedUsers
     }
     case 'check': {
-      return state.filter((u) => u.age >= 18)
+      const filteredAdultUsers = state.filter((u: UserType) => u.age >= 18)
+      return filteredAdultUsers
     }
     default:
       return state
