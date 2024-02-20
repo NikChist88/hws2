@@ -1,8 +1,16 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px 0;
 }
 
 .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
 }
 
 .number {
+  font-size: 16px;
+  font-weight: 600;
 }
